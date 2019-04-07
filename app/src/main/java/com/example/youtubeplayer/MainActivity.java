@@ -1,7 +1,6 @@
 package com.example.youtubeplayer;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -10,21 +9,21 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 public class MainActivity extends YouTubeBaseActivity {
-    YouTubePlayerView  youTubePlayerView;
+    YouTubePlayerView youTubePlayerView;
 
-YouTubePlayer.OnInitializedListener onInitializedListener;
+    YouTubePlayer.OnInitializedListener onInitializedListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-
-        youTubePlayerView=findViewById(R.id.video1);
-        onInitializedListener=new YouTubePlayer.OnInitializedListener() {
+        youTubePlayerView = findViewById(R.id.video1);
+        onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-             youTubePlayer.loadPlaylist("PLrrvJVo1_i-fiUCsgtZLsBSS8_3DvXjkN");
+                youTubePlayer.loadPlaylist("PLrrvJVo1_i-fiUCsgtZLsBSS8_3DvXjkN");
             }
 
             @Override
@@ -32,7 +31,7 @@ YouTubePlayer.OnInitializedListener onInitializedListener;
 
             }
         };
-        youTubePlayerView.initialize(YoutubeConfig.getApiKey(),onInitializedListener);
+        youTubePlayerView.initialize(YoutubeConfig.getApiKey(), onInitializedListener);
         startService(new Intent(this, MyService.class));
     }
 }
